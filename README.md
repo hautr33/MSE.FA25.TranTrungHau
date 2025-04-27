@@ -41,6 +41,7 @@ This project demonstrates a basic MLOps workflow:
 ```
 pip install -r requirements.txt
 ```
+(hoặc `pip install mlflow pandas scikit-learn flask`)
 ### 2. Start MLflow Tracking Server
 ```
 make start-mlflow

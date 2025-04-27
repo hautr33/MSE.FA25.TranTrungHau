@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/ht/Downloads/DevOps%2C%20DataOps%2C%20MLOps/ML/mlflow_classification_project/model/mlruns/0/5e8ea5517901455b872d4848308318f9/artifacts
+end_time: 1745765734221
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 5e8ea5517901455b872d4848308318f9
+run_name: Simple_Logistic_Model
+run_uuid: 5e8ea5517901455b872d4848308318f9
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1745765730813
+status: 3
+tags: []
+user_id: ht

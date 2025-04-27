@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/ht/Downloads/DevOps%2C%20DataOps%2C%20MLOps/ML/mlflow_classification_project/model/mlruns/0/e5c3fd6ef2c24328bf137763850d0e50/artifacts
+end_time: 1745765901171
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: e5c3fd6ef2c24328bf137763850d0e50
+run_name: Tuning_Run
+run_uuid: e5c3fd6ef2c24328bf137763850d0e50
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1745765898379
+status: 3
+tags: []
+user_id: ht

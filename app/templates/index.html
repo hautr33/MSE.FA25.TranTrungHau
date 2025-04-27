@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>🧪 Generate Random Features & Predict</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script>
+        function generateRandomFeatures() {
+            let features = [];
+            for (let i = 0; i < 20; i++) {
+                features.push((Math.random() * 4 - 2).toFixed(4)); // random từ -2 đến 2
+            }
+            document.getElementById("features").value = "[" + features.join(",") + "]";
+        }
+
+        function sendPredict() {
+            let featureText = document.getElementById("features").value;
+            let featureArray = JSON.parse(featureText);
+            let inputJson = {};
+            for (let i = 0; i < 20; i++) {
+                inputJson["feature_" + i] = parseFloat(featureArray[i]);
+            }
+
+            fetch('/predict_api', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(inputJson)
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("response").innerText = JSON.stringify(data, null, 4);
+
+                generateRandomFeatures(); // 🛎️ Auto-generate features mới sau mỗi lần predict xong
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Prediction failed!');
+            });
+        }
+
+
+        window.onload = function() {
+            generateRandomFeatures(); // 🛎️ Auto generate features khi vừa mở trang
+        }
+    </script>
+</head>
+<body class="bg-light">
+<div class="container mt-5">
+    <h1 class="text-center mb-4">🧪 Generate Data</h1>
+
+    <div class="mb-3 text-center">
+        <button onclick="generateRandomFeatures()" class="btn btn-outline-primary">🔄 Generate Random Features</button>
+    </div>
+
+    <div class="mb-3">
+        <textarea id="features" class="form-control" rows="4"></textarea>
+    </div>
+
+    <div class="text-center mb-4">
+        <button onclick="sendPredict()" class="btn btn-outline-danger">📤 Predict</button>
+    </div>
+
+    <h4 class="text-center text-info">API Response:</h4>
+    <pre id="response" class="bg-white p-3 rounded shadow-sm"></pre>
+</div>
+</body>
+</html>

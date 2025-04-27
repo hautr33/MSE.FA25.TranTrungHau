@@ -9,16 +9,13 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
 
 def tune_model(data_path):
-    # Kết nối Tracking server
     mlflow.set_tracking_uri("http://127.0.0.1:5000")
     mlflow.set_experiment("Tuning_Logistic_Model")
 
-    # Load dữ liệu
     df = pd.read_csv(data_path)
     X = df.drop("target", axis=1)
     y = df["target"]
 
-    # Chia train/test
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
     param_grid = {"C": [0.01, 0.1, 1.0, 10.0], "max_iter": [100, 200]}
@@ -72,11 +69,8 @@ def register_best_model(run_id, model_name="best_classification_model"):
     print(f"✅ Model registered as '{model_name}' version {result.version} and alias 'production' assigned.")
 
 if __name__ == "__main__":
-    # Đường dẫn dữ liệu
     data_path = "../data/classification_data.csv"
 
-    # Tune model và lấy best run_id
     best_run_id = tune_model(data_path)
 
-    # Register model tốt nhất vào Model Registry
     register_best_model(best_run_id)

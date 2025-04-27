@@ -16,18 +16,14 @@ def generate_data(n_samples=1000, n_features=20, n_classes=2, random_state=42):
     return data
 
 if __name__ == "__main__":
-    # Đường dẫn lưu file
     output_dir = "../data"
-    os.makedirs(output_dir, exist_ok=True)  # ✅ Đảm bảo folder tồn tại
+    os.makedirs(output_dir, exist_ok=True)
     output_path = os.path.join(output_dir, "classification_data.csv")
 
-    # Generate dữ liệu
     df = generate_data()
 
-    # Save CSV
     df.to_csv(output_path, index=False)
 
-    # ✅ Ghi log sau khi lưu
     print(f"✅ Data generated successfully!")
     print(f"🔹 Number of samples: {df.shape[0]}")
     print(f"🔹 Number of features (without target): {df.shape[1] - 1}")

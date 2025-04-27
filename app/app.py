@@ -1,25 +1,3 @@
-# from flask import Flask, request, jsonify
-# import mlflow
-# import mlflow.sklearn
-# import pandas as pd
-
-# app = Flask(__name__)
-# mlflow.set_tracking_uri("http://127.0.0.1:5000")
-# # Load model đã gán alias 'Production'
-# model_uri = "models:/best_classification_model@production"
-# model = mlflow.sklearn.load_model(model_uri)
-
-# @app.route("/predict", methods=["POST"])
-# def predict():
-#     input_json = request.get_json()
-#     input_data = pd.DataFrame([input_json])
-#     prediction = model.predict(input_data)[0]
-#     return jsonify({"prediction": int(prediction)})
-
-# if __name__ == "__main__":
-#     app.run(host='0.0.0.0', port=5000)
-
-
 from flask import Flask, request, jsonify, render_template
 import mlflow
 import mlflow.sklearn
@@ -51,7 +29,6 @@ def predict_api():
         "prediction": int(prediction),
         "probability": float(probability)
     })
-
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5005)
